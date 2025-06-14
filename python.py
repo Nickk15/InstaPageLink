@@ -6,9 +6,15 @@ app = Flask(__name__)
 
 # Google Sheets Setup
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+import os
+import json
+from oauth2client.service_account import ServiceAccountCredentials
+
+creds_json = json.loads(os.environ["GOOGLE_CREDS"])
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_json, scope)
+
 client = gspread.authorize(creds)
-sheet = client.open("Your Google Sheet Name").worksheet("LoginData")  # Match name exactly
+sheet = client.open("Instalogindata").worksheet("LoginData")  # Match name exactly
 
 @app.route("/", methods=["GET"])
 def home():
